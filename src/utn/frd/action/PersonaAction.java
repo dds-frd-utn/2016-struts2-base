@@ -62,8 +62,9 @@ public class PersonaAction extends ActionSupport {
 			return ERROR;
 		}
 		
-		new Persona(personas.size(), name, edad, gender);
+		Persona p = new Persona(personas.size(), name, edad, gender);
 		
+		personas.add(p);
 		return SUCCESS;
 	}
 	
