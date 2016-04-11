@@ -25,7 +25,20 @@
     		<result name="error">/personas.jsp</result>
     		<result name="success">/personas.jsp</result>
     	</action>
+    	
+		<action name="modoedit" class="utn.frd.action.PersonaAction" method="modoedit">
+    		<result name="success">/personas.jsp</result>
+    	</action>    	
 
+		<action name="edit" class="utn.frd.action.PersonaAction" method="edit">
+    		<result name="error">/personas.jsp</result>
+    		<result name="success">/personas.jsp</result>
+    	</action>
+    	
+    	<action name="delete" class="utn.frd.action.PersonaAction" method="delete">
+    		<result name="error">/personas.jsp</result>
+    		<result name="success">/personas.jsp</result>
+    	</action>
     </package>
 
 </struts>

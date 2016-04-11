@@ -8,12 +8,30 @@ import utn.frd.db.PersistentManager;
 public class PersonaAction extends ActionSupport {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private String name;
 	private String age;
 	private String gender;
 	private List<Persona> personas;
-	
+	private Boolean editbool = true;
+	private int editid;
+		
+	public int getEditid() {
+		return editid;
+	}
+
+	public void setEditid(int editid) {
+		this.editid = editid;
+	}
+
+	public Boolean getEditbool() {
+		return editbool;
+	}
+
+	public void setEditbool(Boolean editbool) {
+		this.editbool = editbool;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -64,7 +82,14 @@ public class PersonaAction extends ActionSupport {
 		
 		Persona p = new Persona(personas.size(), name, edad, gender);
 		
+		editbool = true;
 		personas.add(p);
+		return SUCCESS;
+	}
+	
+	public String modoedit(){
+		personas = PersistentManager.getInstance();
+		editbool = false;
 		return SUCCESS;
 	}
 	

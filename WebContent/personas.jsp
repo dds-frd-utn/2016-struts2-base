@@ -22,14 +22,42 @@
 			<th>NOMBRE</th>
 			<th>EDAD</th>
 			<th>GENERO</th>
+			<th>EDITAR</th>
 		</tr>
 	<s:iterator value="personas" var="p">
-		<tr>
-			<td><s:property value="#p.id"/></td>
-			<td><s:property value="#p.name"/></td>
-			<td><s:property value="#p.age"/></td>
-			<td><s:property value="#p.gender"/></td>
-		</tr>
+		<s:if test="editbool">
+			<tr>
+				<td><s:property value="#p.id"/></td>
+				<td><s:property value="#p.name"/></td>
+				<td><s:property value="#p.age"/></td>
+				<td><s:property value="#p.gender"/></td>
+				<td><a href="<s:url action='modoedit'>
+								<s:param name="editid" value="#p.id" />
+							</s:url>">EDITAR</a></td>
+				<td><a href="<s:url action='delete'/>">X</a></td>
+			</tr>
+		</s:if>
+		<s:else>
+			<s:if test="#p.id == editid">
+				<tr>
+					<td><s:property value="#p.id"/></td>
+					<td><s:textfield theme="simple" name="name" /></td>
+					<td><s:textfield theme="simple" name="age" /></td>
+					<td><s:radio theme="simple" name="gender" list="#{'Femenino':'Femenino','Masculino':'Masculino'}" /></td>
+					<td><a href="<s:url action='lalala'>
+									<s:param name="editid" value="#p.id" />
+								</s:url>">Guardar</a></td>
+				</tr>
+			</s:if>
+			<s:else>
+				<tr>
+					<td><s:property value="#p.id"/></td>
+					<td><s:property value="#p.name"/></td>
+					<td><s:property value="#p.age"/></td>
+					<td><s:property value="#p.gender"/></td>
+				</tr>
+			</s:else>
+		</s:else>
 	</s:iterator>
 	</table>
 </body>
