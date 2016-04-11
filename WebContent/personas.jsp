@@ -34,7 +34,9 @@
 				<td><a href="<s:url action='modoedit'>
 								<s:param name="editid" value="#p.id" />
 							</s:url>">EDITAR</a></td>
-				<td><a href="<s:url action='delete'/>">X</a></td>
+				<td><a href="<s:url action='delete'>
+								<s:param name="editid" value="#p.id"  />
+							</s:url>">X</a></td>
 			</tr>
 		</s:if>
 		<s:else>

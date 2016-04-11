@@ -93,4 +93,13 @@ public class PersonaAction extends ActionSupport {
 		return SUCCESS;
 	}
 	
+	public String delete(){
+		personas = PersistentManager.getInstance();
+		for(Persona p : personas){
+			if(p.getId() == editid){
+				personas.remove(editid);
+			}
+		}
+		return SUCCESS;
+	}
 }
