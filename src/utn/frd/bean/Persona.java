@@ -2,15 +2,15 @@ package utn.frd.bean;
 
 public class Persona {
 	
-	private long id;
+	private int id;
 	private String name;
 	private int age;
 	private String gender;
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getName() {

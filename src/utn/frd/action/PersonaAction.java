@@ -15,7 +15,7 @@ public class PersonaAction extends ActionSupport {
 	private List<Persona> personas;
 	private Boolean editbool = true;
 	private int editid;
-		
+
 	public int getEditid() {
 		return editid;
 	}
@@ -80,13 +80,21 @@ public class PersonaAction extends ActionSupport {
 			return ERROR;
 		}
 		
-		Persona p = new Persona(personas.size(), name, edad, gender);
+		int ultimoid;
 		
-		editbool = true;
+		if(personas.size() == 0){
+			ultimoid = 0;
+		}else{
+			ultimoid = (personas.get(personas.size()-1)).getId();
+		}
+		ultimoid = ultimoid + 1;
+		Persona p = new Persona(ultimoid, name, edad, gender);
+		
+		editbool = true; //para cuando se esta en modoedit y queres agregar a alguien (por las dudas)
 		personas.add(p);
 		return SUCCESS;
 	}
-	
+
 	public String modoedit(){
 		personas = PersistentManager.getInstance();
 		editbool = false;
@@ -97,7 +105,7 @@ public class PersonaAction extends ActionSupport {
 		personas = PersistentManager.getInstance();
 		for(Persona p : personas){
 			if(p.getId() == editid){
-				personas.remove(editid);
+				personas.remove(p);
 			}
 		}
 		return SUCCESS;
