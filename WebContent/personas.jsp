@@ -42,13 +42,14 @@
 		<s:else>
 			<s:if test="#p.id == editid">
 				<tr>
-					<td><s:property value="#p.id"/></td>
-					<td><s:textfield theme="simple" name="name" /></td>
-					<td><s:textfield theme="simple" name="age" /></td>
-					<td><s:radio theme="simple" name="gender" list="#{'Femenino':'Femenino','Masculino':'Masculino'}" /></td>
-					<td><a href="<s:url action='lalala'>
-									<s:param name="editid" value="#p.id" />
-								</s:url>">Guardar</a></td>
+					<s:form theme="simple" action="edit">
+						<s:hidden name="editid" value="%{#p.id}" />
+						<td><s:property value="#p.id"/></td>
+						<td><s:textfield theme="simple" name="name" /></td>
+						<td><s:textfield theme="simple" name="age" /></td>
+						<td><s:radio theme="simple" name="gender" list="#{'Femenino':'Femenino','Masculino':'Masculino'}" /></td>
+						<td><s:submit value="Guardar" /></td>
+					</s:form>
 				</tr>
 			</s:if>
 			<s:else>

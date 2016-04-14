@@ -110,4 +110,31 @@ public class PersonaAction extends ActionSupport {
 		}
 		return SUCCESS;
 	}
+	
+	public String edit(){
+		personas = PersistentManager.getInstance();
+		int edad = 0;
+
+		try{
+			edad = Integer.parseInt(age);
+		}catch(Exception e){
+			addActionError("Ocurrio un error con la edad");
+			return ERROR;
+		}
+		
+		for(Persona p: personas){
+			if(p.getId() == editid){
+				int lugar = personas.indexOf(p);
+				p.setName(name);
+				p.setAge(edad);
+				p.setGender(gender);
+				personas.set(lugar, p);
+			}
+		}
+		name = null;
+		age = null;
+		gender = null;
+		editbool = true;
+		return SUCCESS;
+	}
 }
